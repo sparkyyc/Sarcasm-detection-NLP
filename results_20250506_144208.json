@@ -1,0 +1,56 @@
+{
+  "timestamp": "20250506_144208",
+  "sklearn": {
+    "best_params": {
+      "clf__C": 2.5378155082656657,
+      "clf__class_weight": "balanced",
+      "features__word_tfidf__ngram_range": [
+        1,
+        1
+      ]
+    },
+    "report": {
+      "0": {
+        "precision": 0.5935960591133005,
+        "recall": 0.6885714285714286,
+        "f1-score": 0.6375661375661376,
+        "support": 350.0
+      },
+      "1": {
+        "precision": 0.6955307262569832,
+        "recall": 0.6014492753623188,
+        "f1-score": 0.6450777202072538,
+        "support": 414.0
+      },
+      "accuracy": 0.6413612565445026,
+      "macro avg": {
+        "precision": 0.6445633926851418,
+        "recall": 0.6450103519668737,
+        "f1-score": 0.6413219288866957,
+        "support": 764.0
+      },
+      "weighted avg": {
+        "precision": 0.6488329075393275,
+        "recall": 0.6413612565445026,
+        "f1-score": 0.6416365501491508,
+        "support": 764.0
+      }
+    }
+  },
+  "bert_hpo": {
+    "learning_rate": 1.2771377419828109e-05,
+    "num_train_epochs": 3,
+    "weight_decay": 0.07262224347226466
+  },
+  "bert_final_eval": {
+    "eval_loss": 0.6629413962364197,
+    "eval_accuracy": 0.6963350785340314,
+    "eval_precision": 0.7106481481481481,
+    "eval_recall": 0.7415458937198067,
+    "eval_f1": 0.7257683215130024,
+    "eval_runtime": 21.677,
+    "eval_samples_per_second": 35.245,
+    "eval_steps_per_second": 2.214,
+    "epoch": 3.0
+  }
+}
