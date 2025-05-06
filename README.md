@@ -2,6 +2,8 @@
 
 This repo contains scripts for detecting sarcasm in tweets using both a feature-based ML pipeline and a transformer (BERT)-based approach, plus hyperparameter tuning and error analysis.
 
+Video: https://youtu.be/8O4wm8mfwqQ
+
 ## What's included
 
 SemEval2018-T3-train-taskA.txt            # Raw tweet dataset
