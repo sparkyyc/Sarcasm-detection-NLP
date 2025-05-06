@@ -6,6 +6,10 @@ Video: https://youtu.be/8O4wm8mfwqQ
 
 ## What's included
 
+Report PDF
+
+Slides PDF
+
 SemEval2018-T3-train-taskA.txt            # Raw tweet dataset
 
 sarcasm-detection.py                      # Baseline pipeline: TF–IDF + hand-crafted features & initial BERT fine-tuning
