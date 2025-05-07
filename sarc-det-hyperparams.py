@@ -156,8 +156,8 @@ def compute_metrics(eval_pred):
     return {
         'accuracy': (preds == labels).mean(),
         'precision': precision_score(labels, preds),
-        'recall':    recall_score(labels, preds),
-        'f1':        f1_score(labels, preds)
+        'recall': recall_score(labels, preds),
+        'f1': f1_score(labels, preds)
     }
 
 def model_init():

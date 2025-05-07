@@ -89,9 +89,9 @@ class DenseTransformer(BaseEstimator, TransformerMixin):
 
 grid = joblib.load('ml_grid_search.joblib')
 
-model     = BertForSequenceClassification.from_pretrained('./results')
+model = BertForSequenceClassification.from_pretrained('./results')
 tokenizer = BertTokenizer.from_pretrained('./results')
-trainer   = Trainer(model=model)
+trainer = Trainer(model=model)
 
 data_path = 'SemEval2018-T3-train-taskA.txt'
 cols = ['index','label','tweet']
@@ -124,21 +124,21 @@ class TweetDataset(torch.utils.data.Dataset):
     
 test_ds = TweetDataset(X_test, y_test, tokenizer, max_length=256)
 
-ml_preds   = grid.predict(X_test)
-bert_out   = trainer.predict(test_ds)
+ml_preds = grid.predict(X_test)
+bert_out = trainer.predict(test_ds)
 bert_preds = np.argmax(bert_out.predictions, axis=1)
 
 df_err = pd.DataFrame({
-    'tweet':      X_test.reset_index(drop=True),
-    'true':       y_test.reset_index(drop=True),
-    'ml_pred':    ml_preds,
-    'bert_pred':  bert_preds
+    'tweet': X_test.reset_index(drop=True),
+    'true': y_test.reset_index(drop=True),
+    'ml_pred': ml_preds,
+    'bert_pred': bert_preds
 })
 
 bert_fp = df_err[(df_err.bert_pred==1) & (df_err.true==0)]
 bert_fn = df_err[(df_err.bert_pred==0) & (df_err.true==1)]
-ml_fp   = df_err[(df_err.ml_pred  ==1) & (df_err.true==0)]
-ml_fn   = df_err[(df_err.ml_pred  ==0) & (df_err.true==1)]
+ml_fp = df_err[(df_err.ml_pred  ==1) & (df_err.true==0)]
+ml_fn = df_err[(df_err.ml_pred  ==0) & (df_err.true==1)]
 
 print("\n BERT False Positives")
 print(bert_fp[['tweet','true','bert_pred']].head(10))
@@ -150,23 +150,23 @@ print(ml_fp[['tweet','true','ml_pred']].head(10))
 print("\n ML False Negatives")
 print(ml_fn[['tweet','true','ml_pred']].head(10))
 
-ml_fp      = df_err[(df_err.ml_pred   == 1) & (df_err.true == 0)]
-bert_fp    = df_err[(df_err.bert_pred == 1) & (df_err.true == 0)]
+ml_fp = df_err[(df_err.ml_pred   == 1) & (df_err.true == 0)]
+bert_fp = df_err[(df_err.bert_pred == 1) & (df_err.true == 0)]
 overlap_fp = df_err[(df_err.ml_pred   == 1) &
                     (df_err.bert_pred == 1) &
                     (df_err.true       == 0)]
 
-ml_fn      = df_err[(df_err.ml_pred   == 0) & (df_err.true == 1)]
-bert_fn    = df_err[(df_err.bert_pred == 0) & (df_err.true == 1)]
+ml_fn = df_err[(df_err.ml_pred   == 0) & (df_err.true == 1)]
+bert_fn = df_err[(df_err.bert_pred == 0) & (df_err.true == 1)]
 overlap_fn = df_err[(df_err.ml_pred   == 0) &
                     (df_err.bert_pred == 0) &
                     (df_err.true       == 1)]
 
 summary = pd.DataFrame({
-    'Error Type':      ['False Positives', 'False Negatives'],
-    'ML Errors':       [ml_fp.shape[0],      ml_fn.shape[0]],
-    'BERT Errors':     [bert_fp.shape[0],    bert_fn.shape[0]],
-    'Overlap Errors':  [overlap_fp.shape[0], overlap_fn.shape[0]]
+    'Error Type': ['False Positives', 'False Negatives'],
+    'ML Errors': [ml_fp.shape[0],      ml_fn.shape[0]],
+    'BERT Errors': [bert_fp.shape[0],    bert_fn.shape[0]],
+    'Overlap Errors': [overlap_fp.shape[0], overlap_fn.shape[0]]
 })
 
 print(summary.to_markdown(index=False))
