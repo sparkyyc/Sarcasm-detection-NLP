@@ -1,3 +1,6 @@
+# Christa Sparks
+# hyper parameter tuning
+# runtime ~ 3-5 hours
 import re
 import json
 import numpy as np
