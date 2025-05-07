@@ -27,6 +27,8 @@ README.md                                 # This file
 
 ## Setup & Dependencies
 
+I did run alot of versions and slightly lost track of what versions of what were needed. Contact me at sparkyyc@gmail.com if updates are needed.
+
 1. Create & activate a virtual environment:
    
     python3 -m venv venv
